@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+// import './Login.css';
 
 
 function Login_page() {
+
+  useEffect(() => {
+    
+    // change the body backgronnd color : 
+    document.body.style.backgroundColor = "#E0FFFF";
+
+
+    //reset the body backgrond color when component is unmounted : 
+    return() => {
+      document.body.style.backgroundColor = "";
+    };
+
+  }, []);
 
 
   const [username, setUsername] = useState("");
@@ -58,23 +72,23 @@ function Login_page() {
     };
 
 
-  return (
-      
+  return (     
 <>
-
-    <h1 className="my-5" style={{textAlign : "center", fontFamily : "sans-serif", fontSize : "60px"}}>
-          Login Form </h1>
+    <h1 style={{textAlign : "center", fontFamily : "serif", fontSize : "50px",
+      fontWeight : "bold", marginTop : "75px"}}>
+          Login to NEWS Buzz </h1>
 
 <form onSubmit={validate}>
 
-  <div className="container my-5"
-  style={{width : "500px", height : "350px", margin: "0 auto", border : "2px solid black"}}> 
+  <div className="container"
+  style={{width : "500px", height : "300px", margin: "0 auto", border : "4px solid black", background:"#b9fab9",
+    borderRight:"none", borderLeft:"none", marginTop : "50px"}}> 
   <br/> 
 
     <div className="mb-3 row my-3" style={{marginLeft : "10px"}}>
         <label htmlFor="floatingInput" className="col-sm-2 col-form-label"><strong> Username: </strong> </label>
         <div className="col-sm-10">
-        <input className="form-control" type="text" placeholder = "Username" value={username}
+        <input className="form-control" type="text" placeholder = "Username" value={username} 
         aria-label="default input example" style={{width : "300px", marginLeft: "20px", border : "1px solid black", position : "relative"}}
         onChange={(e)=> setUsername(e.target.value)}/>
         {error.username && <p style={{color : "red", position : "absolute",  marginLeft: "40px"}}> {error.username} </p>} <br/>
@@ -84,7 +98,7 @@ function Login_page() {
     <div className="mb-3 row" style={{marginLeft : "10px"}}>
       <label htmlFor="inputPassword" className="col-sm-2 col-form-label"><strong> Password: </strong> </label>
       <div className="col-sm-10">
-        <input type="password" className="form-control" id="inputPassword" placeholder="Password" 
+        <input type="password" className="form-control" id="inputPassword" placeholder="Password" autoComplete="current-password" name="password"
         style={{width : "300px", marginLeft: "20px", border : "1px solid black", position : "relative"}} 
         value={password} onChange={(e)=> setPassword(e.target.value)}/>
 {/* 
@@ -104,6 +118,8 @@ function Login_page() {
   </div>
 
 </form>
+
+
 </>
   );
 }
