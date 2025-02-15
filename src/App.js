@@ -1,7 +1,7 @@
 import React, { Children, useEffect, useState } from 'react'
 import Navbar from './components/Navbar';
 import News from './components/News';
-import { BrowserRouter as Router,Route, Routes, Navigate, useLocation} from 'react-router-dom';
+import { HashRouter as Router,Route, Routes, Navigate, useLocation} from 'react-router-dom';
 import LoadingBar from 'react-top-loading-bar';
 import Login_page from './components/Login_page';
 
